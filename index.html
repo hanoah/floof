@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLOOF - Headspace for Dogs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mynerve&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       FLOOF LANDING PAGE
+       Design System: Energetic Splashes
+       ============================================ */
+    
+    :root {
+      /* Primary Colors */
+      --coral: #E94E3C;
+      --coral-dark: #c73d2d;
+      --yellow: #F5D547;
+      --yellow-dark: #e5c537;
+      --teal: #3CBBB1;
+      --green: #2ECC71;
+      --green-dark: #27ae60;
+      
+      /* Soft Colors from App */
+      --soft-pink: #F5C6C0;
+      --soft-green: #B8E5D0;
+      
+      /* Neutrals */
+      --cream: #FFFEF5;
+      --white: #FFFFFF;
+      --ink: #1A1A1A;
+      --gray: #666666;
+      --light-gray: #F5F5F5;
+      
+      /* Typography */
+      --font-display: 'Mynerve', cursive;
+      --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ============================================
+       UTILITY CLASSES
+       ============================================ */
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Tactile Button Style */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: 16px;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.1s ease;
+      position: relative;
+    }
+
+    .btn-primary {
+      background-color: var(--coral);
+      color: var(--white);
+      border-bottom: 4px solid var(--coral-dark);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(233, 78, 60, 0.3);
+    }
+
+    .btn-primary:active {
+      transform: translateY(2px);
+      border-bottom-width: 0;
+    }
+
+    .btn-secondary {
+      background-color: var(--ink);
+      color: var(--white);
+      border-bottom: 4px solid #000;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary:active {
+      transform: translateY(2px);
+      border-bottom-width: 0;
+    }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 254, 245, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .nav-cta {
+      padding: 12px 24px;
+      font-size: 16px;
+    }
+
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+    
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 6vw, 72px);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero-text h1 span {
+      color: var(--coral);
+    }
+
+    .hero-text p {
+      font-size: 20px;
+      color: var(--gray);
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-card {
+      background: var(--soft-pink);
+      border-radius: 40px;
+      border: 3px solid var(--ink);
+      padding: 40px;
+      position: relative;
+      max-width: 380px;
+      transform: rotate(3deg);
+    }
+
+    .hero-card img {
+      width: 200px;
+      display: block;
+      margin: 0 auto 24px;
+    }
+
+    .hero-card-label {
+      text-align: center;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .hero-card-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      text-align: center;
+      color: var(--ink);
+    }
+
+    /* Decorative Blobs */
+    .blob-yellow {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: var(--yellow);
+      border-radius: 60% 40% 50% 70% / 50% 60% 40% 50%;
+      z-index: -1;
+    }
+
+    .blob-teal {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: var(--teal);
+      border-radius: 40% 60% 70% 30% / 60% 40% 60% 40%;
+      z-index: -1;
+    }
+
+    .blob-coral {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: var(--coral);
+      border-radius: 50% 50% 40% 60% / 40% 60% 40% 60%;
+      z-index: -1;
+    }
+
+    .hero .blob-yellow {
+      top: 20%;
+      left: 5%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero .blob-teal {
+      bottom: 20%;
+      right: 10%;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    .hero .blob-coral {
+      top: 60%;
+      left: 45%;
+      animation: float 7s ease-in-out infinite 1s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    /* ============================================
+       FEATURES SECTION
+       ============================================ */
+    
+    .features {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-label {
+      display: inline-block;
+      background: var(--yellow);
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 2px solid var(--ink);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 20px;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 3px solid var(--ink);
+      border-radius: 24px;
+      padding: 32px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 8px 8px 0 var(--ink);
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      color: var(--gray);
+      font-size: 16px;
+    }
+
+    .feature-card:nth-child(1) {
+      background: var(--soft-pink);
+    }
+
+    .feature-card:nth-child(2) {
+      background: var(--yellow);
+    }
+
+    .feature-card:nth-child(3) {
+      background: var(--soft-green);
+    }
+
+    /* ============================================
+       HOW IT WORKS SECTION
+       ============================================ */
+    
+    .how-it-works {
+      padding: 120px 0;
+      background: var(--white);
+      border-top: 3px solid var(--ink);
+      border-bottom: 3px solid var(--ink);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      margin-top: 60px;
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: var(--coral);
+      border: 3px solid var(--ink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--white);
+      margin: 0 auto 20px;
+    }
+
+    .step-image {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .step h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .step p {
+      color: var(--gray);
+      font-size: 16px;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    /* Arrow between steps */
+    .step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -30px;
+      top: 140px;
+      font-size: 32px;
+      color: var(--teal);
+    }
+
+    /* ============================================
+       ACTIVITIES SECTION
+       ============================================ */
+    
+    .activities {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .activity-card {
+      background: var(--green);
+      border: 3px solid var(--ink);
+      border-radius: 32px;
+      padding: 32px;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .activity-card::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+
+    .activity-tag {
+      display: inline-block;
+      background: var(--white);
+      color: var(--ink);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .activity-meta {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: 12px;
+    }
+
+    .activity-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .activity-desc {
+      font-size: 16px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .activity-card:nth-child(2) {
+      background: var(--teal);
+    }
+
+    .activity-card:nth-child(3) {
+      background: var(--coral);
+    }
+
+    .activity-card:nth-child(4) {
+      background: #8B5CF6;
+    }
+
+    /* ============================================
+       WEATHER SECTION
+       ============================================ */
+    
+    .weather {
+      padding: 120px 0;
+      background: linear-gradient(135deg, var(--soft-pink) 0%, var(--cream) 50%, var(--soft-green) 100%);
+      border-top: 3px solid var(--ink);
+      border-bottom: 3px solid var(--ink);
+    }
+
+    .weather-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .weather-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 52px);
+      margin-bottom: 24px;
+    }
+
+    .weather-text p {
+      font-size: 18px;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+
+    .weather-icons {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .weather-icon-card {
+      background: var(--white);
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .weather-icon-card img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 8px;
+    }
+
+    .weather-icon-card span {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .weather-visual {
+      position: relative;
+    }
+
+    .weather-card {
+      background: var(--white);
+      border: 3px solid var(--ink);
+      border-radius: 24px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .weather-card img {
+      width: 60px;
+    }
+
+    .weather-card-info h4 {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .weather-card-info p {
+      color: var(--gray);
+      font-size: 16px;
+    }
+
+    /* ============================================
+       STREAK SECTION
+       ============================================ */
+    
+    .streak {
+      padding: 120px 0;
+    }
+
+    .streak-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .streak-cards {
+      display: flex;
+      gap: 24px;
+    }
+
+    .streak-card {
+      flex: 1;
+      border: 3px solid var(--ink);
+      border-radius: 24px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .streak-card:first-child {
+      background: var(--yellow);
+    }
+
+    .streak-card:last-child {
+      background: var(--soft-pink);
+    }
+
+    .streak-emoji {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    .streak-number {
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .streak-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .streak-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 52px);
+      margin-bottom: 24px;
+    }
+
+    .streak-text p {
+      font-size: 18px;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+
+    /* ============================================
+       TESTIMONIALS SECTION
+       ============================================ */
+    
+    .testimonials {
+      padding: 120px 0;
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .testimonials .section-label {
+      background: var(--coral);
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    .testimonials .section-title {
+      color: var(--white);
+    }
+
+    .testimonials .section-subtitle {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 32px;
+    }
+
+    .testimonial-stars {
+      color: var(--yellow);
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-text {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .testimonial-name {
+      font-weight: 700;
+    }
+
+    .testimonial-pet {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    /* ============================================
+       CTA SECTION
+       ============================================ */
+    
+    .cta {
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 64px);
+      margin-bottom: 24px;
+    }
+
+    .cta p {
+      font-size: 20px;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta .blob-yellow {
+      top: 10%;
+      right: 10%;
+      width: 200px;
+      height: 200px;
+    }
+
+    .cta .blob-teal {
+      bottom: 10%;
+      left: 5%;
+      width: 150px;
+      height: 150px;
+    }
+
+    .cta .blob-coral {
+      top: 50%;
+      left: 15%;
+      width: 100px;
+      height: 100px;
+    }
+
+    .cta-mascot {
+      width: 200px;
+      margin-top: 40px;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    
+    footer {
+      background: var(--ink);
+      color: var(--white);
+      padding: 60px 0 30px;
+      border-top: 3px solid var(--ink);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--yellow);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN
+       ============================================ */
+    
+    @media (max-width: 992px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-ctas {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .step:not(:last-child)::after {
+        display: none;
+      }
+
+      .activities-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .weather-content,
+      .streak-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .weather-icons {
+        justify-content: center;
+      }
+
+      .streak-cards {
+        justify-content: center;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-content {
+        padding: 12px 16px;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+
+      .nav-cta {
+        padding: 10px 16px;
+        font-size: 14px;
+      }
+
+      .hero {
+        padding-top: 80px;
+      }
+
+      .hero-card {
+        padding: 24px;
+        margin: 0 20px;
+      }
+
+      .hero-card img {
+        width: 150px;
+      }
+
+      .btn {
+        padding: 14px 24px;
+        font-size: 16px;
+      }
+
+      .streak-cards {
+        flex-direction: column;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    /* ============================================
+       ANIMATIONS ON SCROLL
+       ============================================ */
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .slide-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .slide-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-content">
+      <a href="#" class="logo">🐕 FLOOF</a>
+      <a href="#download" class="btn btn-primary nav-cta">Download Free</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="blob-yellow"></div>
+    <div class="blob-teal"></div>
+    <div class="blob-coral"></div>
+    
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Headspace for <span>Dogs.</span></h1>
+          <p>Super short, science-informed activities that help you actually do something with your dog every day, in under 5 minutes. No guilt. Just tiny, high-quality moments.</p>
+          <div class="hero-ctas">
+            <a href="#download" class="btn btn-primary">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              Download for iOS
+            </a>
+            <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <img src="../headspace-for-dogs/assets/images/doge_sleepy.png" alt="Sleepy Shiba Inu dog illustration">
+            <p class="hero-card-label">Today with Buddy</p>
+            <p class="hero-card-title">The Muffin Tin Puzzle</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Why FLOOF?</span>
+        <h2 class="section-title">Tiny moments, huge impact.</h2>
+        <p class="section-subtitle">Built for busy humans who want a calmer, happier dog without the guilt of "should train more."</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <img src="../headspace-for-dogs/assets/images/sun.png" alt="Sun icon" class="feature-icon">
+          <h3>2-5 Minutes</h3>
+          <p>Each FLOOF task is designed to fit into your day, not take it over. Quick wins that add up to real progress.</p>
+        </div>
+        
+        <div class="feature-card fade-in">
+          <img src="../headspace-for-dogs/assets/images/bone.png" alt="Bone icon" class="feature-icon">
+          <h3>No Experience Needed</h3>
+          <p>Step-by-step guidance for every activity. Whether you're a first-time owner or seasoned pro, we've got you.</p>
+        </div>
+        
+        <div class="feature-card fade-in">
+          <img src="../headspace-for-dogs/assets/images/cloud.png" alt="Cloud icon" class="feature-icon">
+          <h3>Weather-Aware</h3>
+          <p>Rain? Snow? Heatwave? FLOOF suggests activities that work for today's conditions, indoors or out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title">Open. FLOOF. Done.</h2>
+        <p class="section-subtitle">No complicated setup. Just you, your dog, and 5 minutes of quality time.</p>
+      </div>
+      
+      <div class="steps">
+        <div class="step fade-in">
+          <div class="step-number">1</div>
+          <img src="../headspace-for-dogs/assets/images/doge_hyper.png" alt="Excited dog" class="step-image">
+          <h3>Open the App</h3>
+          <p>See today's activity waiting for you. Weather-smart recommendations based on your location.</p>
+        </div>
+        
+        <div class="step fade-in">
+          <div class="step-number">2</div>
+          <img src="../headspace-for-dogs/assets/images/doge_happy.png" alt="Happy dog" class="step-image">
+          <h3>Do It Together</h3>
+          <p>Follow the simple steps with your dog. Scent games, training, calming exercises — variety keeps it fun.</p>
+        </div>
+        
+        <div class="step fade-in">
+          <div class="step-number">3</div>
+          <img src="../headspace-for-dogs/assets/images/doge_sleepy.png" alt="Relaxed dog" class="step-image">
+          <h3>Build Your Streak</h3>
+          <p>Mark it done and watch your streak grow. Consistency beats intensity — one activity a day is all you need.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities Section -->
+  <section class="activities">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Sample Activities</span>
+        <h2 class="section-title">What you'll discover.</h2>
+        <p class="section-subtitle">Enriching activities that tire your dog's brain and strengthen your bond.</p>
+      </div>
+      
+      <div class="activities-grid">
+        <div class="activity-card slide-left">
+          <span class="activity-tag">Problem-Solving • Scent</span>
+          <p class="activity-meta">~3 min • indoor</p>
+          <h3 class="activity-title">The Muffin Tin Puzzle</h3>
+          <p class="activity-desc">Place treats in a few cups of a muffin tin, then cover all cups with tennis balls. Let your dog nose and paw the balls aside to find the hidden rewards.</p>
+        </div>
+        
+        <div class="activity-card slide-right">
+          <span class="activity-tag">Calmness • Bonding</span>
+          <p class="activity-meta">~5 min • indoor</p>
+          <h3 class="activity-title">Quiet Settle Mat</h3>
+          <p class="activity-desc">Teach your dog that relaxing on a mat makes good things happen. Perfect for building calmness and self-control in exciting situations.</p>
+        </div>
+        
+        <div class="activity-card slide-left">
+          <span class="activity-tag">Confidence • Novelty</span>
+          <p class="activity-meta">~4 min • indoor</p>
+          <h3 class="activity-title">Novel Surface Walk</h3>
+          <p class="activity-desc">Build confidence by walking over safe, weird textures indoors. Use bubble wrap, yoga mats, or cardboard to create a mini obstacle course.</p>
+        </div>
+        
+        <div class="activity-card slide-right">
+          <span class="activity-tag">Training • Care</span>
+          <p class="activity-meta">~3 min • indoor</p>
+          <h3 class="activity-title">Chin Rest on Palm</h3>
+          <p class="activity-desc">Lay foundations for cooperative care, vet visits, and grooming. A simple but powerful trust-building exercise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Weather Section -->
+  <section class="weather">
+    <div class="container">
+      <div class="weather-content">
+        <div class="weather-text slide-left">
+          <h2>Works in any weather.</h2>
+          <p>Cold, hot, or rainy days when long walks aren't realistic? FLOOF adapts. Get indoor activities when it's pouring and outdoor adventures when the sun is shining.</p>
+          <div class="weather-icons">
+            <div class="weather-icon-card">
+              <img src="../headspace-for-dogs/assets/images/sun.png" alt="Sunny">
+              <span>Sunny</span>
+            </div>
+            <div class="weather-icon-card">
+              <img src="../headspace-for-dogs/assets/images/cloud.png" alt="Rainy">
+              <span>Rainy</span>
+            </div>
+            <div class="weather-icon-card">
+              <img src="../headspace-for-dogs/assets/images/snow.png" alt="Snowy">
+              <span>Snowy</span>
+            </div>
+          </div>
+        </div>
+        <div class="weather-visual slide-right">
+          <div class="weather-card">
+            <img src="../headspace-for-dogs/assets/images/snow.png" alt="Snow weather icon">
+            <div class="weather-card-info">
+              <h4>-3°C</h4>
+              <p>Light snow in your area</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Streak Section -->
+  <section class="streak">
+    <div class="container">
+      <div class="streak-content">
+        <div class="streak-cards slide-left">
+          <div class="streak-card">
+            <div class="streak-emoji">🔥</div>
+            <div class="streak-number">7</div>
+            <div class="streak-label">Day Streak</div>
+          </div>
+          <div class="streak-card">
+            <div class="streak-emoji">🏆</div>
+            <div class="streak-number">23</div>
+            <div class="streak-label">Total Sessions</div>
+          </div>
+        </div>
+        <div class="streak-text slide-right">
+          <h2>Build habits that stick.</h2>
+          <p>Watch your streak grow as you and your floof spend quality time together. One activity a day keeps the guilt away — and builds a calmer, happier dog.</p>
+          <a href="#download" class="btn btn-primary">Start Your Streak</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Good Dogs, Happy Humans</span>
+        <h2 class="section-title">What dog parents are saying.</h2>
+        <p class="section-subtitle">Real stories from real floofs and their humans.</p>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Luna used to bounce off the walls. Now she settles on her mat while I work. FLOOF changed our lives in just 5 minutes a day!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🐕</div>
+            <div>
+              <p class="testimonial-name">Sarah M.</p>
+              <p class="testimonial-pet">& Luna the Border Collie</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"As a first-time dog owner, I was overwhelmed. FLOOF gives me exactly one thing to do each day. No more endless YouTube rabbit holes."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🐶</div>
+            <div>
+              <p class="testimonial-name">Mike T.</p>
+              <p class="testimonial-pet">& Cooper the Golden</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"The weather feature is genius. Rainy days used to mean a crazy dog. Now we have indoor enrichment games and everyone stays sane."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🦮</div>
+            <div>
+              <p class="testimonial-name">Emma L.</p>
+              <p class="testimonial-pet">& Max the Labrador</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta" id="download">
+    <div class="blob-yellow"></div>
+    <div class="blob-teal"></div>
+    <div class="blob-coral"></div>
+    
+    <div class="container">
+      <div class="cta-content fade-in">
+        <h2>Ready to FLOOF?</h2>
+        <p>Join thousands of dog parents building tiny habits that lead to calmer, happier dogs. Free to download, free to love.</p>
+        <div class="cta-buttons">
+          <a href="#" class="btn btn-primary">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Download for iOS
+          </a>
+        </div>
+        <img src="../headspace-for-dogs/assets/images/doge_happy.png" alt="Happy dog mascot" class="cta-mascot">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <a href="#" class="footer-logo">🐕 FLOOF</a>
+        <div class="footer-links">
+          <a href="https://www.notion.so/Privacy-Policy-2c1d18c51d33807cb9a1ca414151c322" target="_blank">Privacy Policy</a>
+          <a href="https://www.notion.so/Terms-of-Use-2c1d18c51d338086a295cbb2d8570df5" target="_blank">Terms of Use</a>
+          <a href="https://www.notion.so/Support-2c1d18c51d3380238d05f3812d904aff" target="_blank">Support</a>
+          <a href="https://www.notion.so/Releases-2c3d18c51d3380778a8be0c95badb98c" target="_blank">Releases</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 FLOOF. Made with ❤️ for dogs everywhere.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.fade-in, .slide-left, .slide-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
